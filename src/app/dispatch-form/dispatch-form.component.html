@@ -1,0 +1,7 @@
+<label for="invoiceNumbers">Números das Notas Fiscais:</label>
+<input [(ngModel)]="invoiceNumbers" id="invoiceNumbers" placeholder="Digite os números das notas (separados por vírgula)" />
+
+<label for="almoxarifeCode" class="mt-3">Código do Almoxarife:</label>
+<input [(ngModel)]="almoxarifeCode" id="almoxarifeCode" placeholder="Digite o código do almoxarife" />
+
+<button (click)="saveDispatch()">Salvar</button>

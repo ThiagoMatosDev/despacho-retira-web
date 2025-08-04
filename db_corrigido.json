@@ -1,0 +1,252 @@
+{
+  "retrievers": [
+    {
+      "id": "1",
+      "name": "João Silva",
+      "cpf": "12345678901",
+      "rg": "123456789",
+      "authorized": true,
+      "business_id": 101
+    },
+    {
+      "id": "2",
+      "name": "Maria Oliveira",
+      "cpf": "98765432100",
+      "rg": "987654321",
+      "authorized": false,
+      "business_id": 102
+    }
+  ],
+  "business": [
+    {
+      "id": "101",
+      "name_fantasy": "Auto Peças XYZ",
+      "razao_social": "XYZ Comércio de Auto Peças Ltda.",
+      "cod_business": 101
+    },
+    {
+      "id": "102",
+      "name_fantasy": "Auto Peças ABC",
+      "razao_social": "ABC Comércio Ltda.",
+      "cod_business": 102
+    }
+  ],
+  "invoices": [
+    {
+      "id": "1",
+      "invoice_number": "12345",
+      "retriever_id": 1,
+      "invoice_datetime": "2025-01-01T10:00:00"
+    },
+    {
+      "id": "2",
+      "invoice_number": "12346",
+      "retriever_id": 1,
+      "invoice_datetime": "2025-01-01T10:30:00"
+    }
+  ],
+  "dispatchers": [
+    {
+      "id": "fe71",
+      "retrieverId": "1",
+      "invoiceNumbers": [
+        "602400"
+      ],
+      "almoxarifeCode": "22",
+      "dispatchedAt": "2025-01-24T02:58:24.298Z"
+    },
+    {
+      "id": "3dbd",
+      "retrieverId": "1",
+      "invoiceNumbers": [
+        "123"
+      ],
+      "almoxarifeCode": "20",
+      "dispatchedAt": "2025-03-26T01:07:34.642Z"
+    },
+    {
+      "id": "42f4",
+      "retrieverId": "1",
+      "invoiceNumbers": [
+        "111"
+      ],
+      "almoxarifeCode": "11",
+      "dispatchedAt": "2025-03-26T02:26:08.860Z"
+    },
+    {
+      "id": "efb8",
+      "retrieverId": "1",
+      "invoiceNumbers": [
+        "2000"
+      ],
+      "almoxarifeCode": "20",
+      "dispatchedAt": "2025-04-01T03:23:51.703Z"
+    },
+    {
+      "id": "4047",
+      "retrieverId": "1",
+      "invoiceNumbers": [
+        "5263"
+      ],
+      "almoxarifeCode": "25",
+      "dispatchedAt": "2025-04-01T04:10:25.587Z"
+    },
+    {
+      "id": "fdbc",
+      "retrieverId": "1",
+      "invoiceNumbers": [
+        "12345"
+      ],
+      "almoxarifeCode": "fe71",
+      "dispatchedAt": "2025-04-01T04:11:16.999Z"
+    },
+    {
+      "id": "2164",
+      "retrieverId": "1",
+      "invoiceNumbers": [
+        "700859"
+      ],
+      "almoxarifeCode": "22",
+      "dispatchedAt": "2025-04-18T01:28:31.551Z"
+    },
+    {
+      "id": "fcc7",
+      "retrieverId": "1",
+      "invoiceNumbers": [
+        "700859"
+      ],
+      "almoxarifeCode": "22",
+      "dispatchedAt": "2025-04-18T01:28:46.694Z"
+    },
+    {
+      "id": "1b03",
+      "retrieverId": "1",
+      "invoiceNumbers": [
+        "155454"
+      ],
+      "almoxarifeCode": "22",
+      "dispatchedAt": "2025-05-01T03:36:51.145Z"
+    },
+    {
+      "id": "e7ee",
+      "retrieverId": "1",
+      "invoiceNumbers": [
+        "12345",
+        "67890",
+        "54321"
+      ],
+      "almoxarifeCode": "20",
+      "dispatchedAt": "2025-05-15T03:58:30.561Z"
+    },
+    {
+      "id": "93d7",
+      "retrieverId": "1",
+      "invoiceNumbers": [
+        "12345"
+      ],
+      "almoxarifeCode": "20",
+      "dispatchedAt": "2025-05-15T04:48:24.060Z"
+    },
+    {
+      "id": "638a",
+      "retrieverId": "1",
+      "invoiceNumbers": [
+        "12345"
+      ],
+      "almoxarifeCode": "10",
+      "dispatchedAt": "2025-05-15T04:49:02.330Z"
+    },
+    {
+      "id": "1660",
+      "almoxarifeCode": "22",
+      "dispatchedAt": "2025-06-28T02:38:56.118Z",
+      "retrieverId": "1",
+      "invoiceNumbers": [
+        "2000",
+        "2001",
+        "2002"
+      ]
+    },
+    {
+      "id": "8741",
+      "retrieverId": "1",
+      "invoiceNumbers": [
+        "200000"
+      ],
+      "almoxarifeCode": "20",
+      "dispatchedAt": "2025-06-28T02:40:50.351Z"
+    },
+    {
+      "id": "e1e8",
+      "retrieverId": "1",
+      "invoiceNumbers": [
+        "123456"
+      ],
+      "almoxarifeCode": "20",
+      "dispatchedAt": "2025-07-26T20:31:10.888Z"
+    },
+    {
+      "id": "2b41",
+      "retriever_id": "1",
+      "invoice_numbers": [
+        "1234566"
+      ],
+      "warehouse_code": "22",
+      "date": "2025-07-26T20:50:45.097Z"
+    },
+    {
+      "id": "ed72",
+      "retriever_id": "1",
+      "invoice_numbers": [
+        "123555"
+      ],
+      "warehouse_code": "22",
+      "date": "2025-07-26T20:52:04.757Z"
+    },
+    {
+      "id": "6b85",
+      "retriever_id": "1",
+      "invoice_numbers": [
+        "123456789002"
+      ],
+      "warehouse_code": "20",
+      "date": "2025-07-26T20:54:13.646Z"
+    },
+    {
+      "id": "f3df",
+      "retriever_id": "1",
+      "invoice_numbers": [
+        "123456"
+      ],
+      "warehouse_code": "20",
+      "date": "2025-07-26T20:55:36.490Z"
+    },
+    {
+      "id": "22fd",
+      "retriever_id": "1",
+      "invoice_numbers": [
+        "12345"
+      ],
+      "warehouse_code": "20",
+      "date": "2025-07-26T20:56:44.894Z"
+    },
+    {
+      "id": "12da",
+      "retrieverId": "1",
+      "invoiceNumbers": [
+        "456789"
+      ],
+      "almoxarifeCode": "20",
+      "dispatchedAt": "2025-07-26T21:03:52.159Z"
+    },
+    {
+      "id": "4d4c",
+      "retrieverId": "1",
+      "invoiceNumbers": [
+        "123456"
+      ],
+      "almoxarifeCode": "22",
+      "dispatchedAt": "2025-08-04T01:47:11.053Z"
+    }
+  ]
+}

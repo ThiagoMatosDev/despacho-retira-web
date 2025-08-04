@@ -1,0 +1,27 @@
+/* Espaçamento básico */
+main {
+  padding: 20px;
+}
+
+.example-card {
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.details-section {
+  margin-top: 20px;
+  padding: 10px;
+  background: #f5f5f5;
+  border-radius: 4px;
+}
+
+/* Estilo responsivo */
+@media (max-width: 600px) {
+  .example-card {
+    width: 100%;
+  }
+}

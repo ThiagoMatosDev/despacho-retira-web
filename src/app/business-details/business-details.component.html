@@ -1,0 +1,58 @@
+<!-- Card principal - só renderiza se business existir -->
+<mat-card *ngIf="business" class="business-card">
+
+  <!-- Cabeçalho do card -->
+  <mat-card-header>
+    <!-- Título principal -->
+    <mat-card-title>Empresa Vinculada</mat-card-title>
+
+    <!-- Subtítulo: mostra CNPJ formatado (se existir) -->
+    <mat-card-subtitle *ngIf="business.cnpj">
+      CNPJ: {{ business.cnpj | cnpj }} <!-- Aplica o pipe cnpj -->
+    </mat-card-subtitle>
+  </mat-card-header>
+
+  <!-- Área de ações (botões) -->
+  <mat-card-actions>
+    <!-- Botão para mostrar/ocultar detalhes -->
+    <button mat-button color="primary" (click)="toggleDetails()">
+      <!-- Ícone dinâmico (olho aberto/fechado) -->
+      <mat-icon>{{ showDetails ? 'visibility_off' : 'visibility' }}</mat-icon>
+      <!-- Texto dinâmico -->
+      {{ showDetails ? 'OCULTAR DETALHES' : 'VER DETALHES' }}
+    </button>
+  </mat-card-actions>
+
+  <!-- Conteúdo dos detalhes (só mostra quando showDetails = true) -->
+  <mat-card-content *ngIf="showDetails">
+    <!-- Linha divisória -->
+    <mat-divider></mat-divider>
+
+    <!-- Linha do Nome Fantasia -->
+    <div class="detail-row">
+      <mat-icon class="detail-icon">business</mat-icon> <!-- Ícone -->
+      <div>
+        <h4>Nome Fantasia</h4> <!-- Label -->
+        <p>{{ business.name_fantasy }}</p> <!-- Valor -->
+      </div>
+    </div>
+
+    <!-- Linha da Razão Social -->
+    <div class="detail-row">
+      <mat-icon class="detail-icon">assignment</mat-icon>
+      <div>
+        <h4>Razão Social</h4>
+        <p>{{ business.razao_social }}</p>
+      </div>
+    </div>
+
+    <!-- Área de botões de ação -->
+    <div class="actions">
+      <!-- Botão de edição -->
+      <button mat-raised-button color="accent" (click)="editBusiness()">
+        <mat-icon>edit</mat-icon> <!-- Ícone de edição -->
+        EDITAR EMPRESA
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>

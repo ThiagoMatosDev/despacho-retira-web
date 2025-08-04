@@ -1,0 +1,23 @@
+<div class="search-container">
+  <label>CPF ou RG:</label>
+  <input
+    type="text"
+    [(ngModel)]="cpfRg"
+    mask="000.000.000-00"
+    [showMaskTyped]="true"
+    [dropSpecialCharacters]="false"
+    placeholder="000.000.000-00"
+    (keyup.enter)="searchRetriever()"
+  >
+  <button (click)="searchRetriever()" [disabled]="isLoading">
+    {{ isLoading ? 'Pesquisando...' : 'Pesquisar' }}
+  </button>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+
+    <div class="actions-footer">
+      <button class="btn-voltar" (click)="voltarParaPrincipal()">Voltar</button>
+    </div>
+  </div>
+</div>
