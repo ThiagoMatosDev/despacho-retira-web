@@ -247,6 +247,15 @@
       ],
       "almoxarifeCode": "22",
       "dispatchedAt": "2025-08-04T01:47:11.053Z"
+    },
+    {
+      "id": "07ca",
+      "retrieverId": "1",
+      "invoiceNumbers": [
+        "12345"
+      ],
+      "almoxarifeCode": "22",
+      "dispatchedAt": "2025-08-04T03:04:15.926Z"
     }
   ]
 }

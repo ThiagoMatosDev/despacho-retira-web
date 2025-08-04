@@ -1,168 +1,163 @@
-<div class="container">
-  <div class="card">
-    <div class="card-header">
-      <h3>Consulta de Retirante</h3>
-    </div>
-
-    <div class="card-body">
-      <!-- Seção de busca -->
-      <div class="search-section">
-        <div class="search-options">
-          <button (click)="toggleSearchType()" class="btn btn-toggle" [class.active]="searchType === 'rg'">
-            Buscar por RG
-          </button>
-          <button (click)="toggleSearchType()" class="btn btn-toggle" [class.active]="searchType === 'cpf'">
-            Buscar por CPF
-          </button>
-        </div>
-
-        <div class="search-field">
-          <label>{{searchType === 'cpf' ? 'CPF' : 'RG'}} do Retirante</label>
-          <div class="input-group">
-            <input
-              [(ngModel)]="identifier"
-              [mask]="maskFormat"
-              [placeholder]="placeholderText"
-              class="form-control"
-            />
-            <button (click)="searchRetriever()" class="btn btn-primary">
-              Pesquisar
-            </button>
-          </div>
-        </div>
+<div class="row">
+  <div class="col-md-6 p-4 rounded-lg shadow-lg w-2/3 bg-blue-500">
+    <div class="card flex-1">
+      <div class="card-header">
+        <h3>Consulta de Retirante</h3>
       </div>
 
-      <!-- Dados do retirante -->
-      <div *ngIf="retriever" class="retriever-info">
-        <h4>Dados do Retirante</h4>
-        <div class="info-grid">
-          <div class="info-item">
-            <span class="label">Nome:</span>
-            <span class="value">{{retriever.name}}</span>
+      <div class="card-body">
+        <!-- Seção de busca -->
+        <div class="search-section">
+          <div class="search-options">
+            <button (click)="toggleSearchType()" class="btn btn-toggle" [class.active]="searchType === 'rg'">
+              Buscar por RG
+            </button>
+            <button (click)="toggleSearchType()" class="btn btn-toggle" [class.active]="searchType === 'cpf'">
+              Buscar por CPF
+            </button>
           </div>
-          <div *ngIf="retriever.cpf" class="info-item">
-            <span class="label">CPF:</span>
-            <span class="value">{{retriever.cpf | mask: '000.000.000-00'}}</span>
-          </div>
-          <div *ngIf="retriever.rg" class="info-item">
-            <span class="label">RG:</span>
-            <span class="value">{{retriever.rg}}</span>
-          </div>
-          <div class="info-item">
-            <span class="label">Autorizado:</span>
-            <span class="value badge" [ngClass]="{'badge-success': retriever.authorized, 'badge-danger': !retriever.authorized}">
-              {{retriever.authorized ? 'Sim' : 'Não'}}
-            </span>
+
+          <div class="search-field">
+            <label>{{searchType === 'cpf' ? 'CPF' : 'RG'}} do Retirante</label>
+            <div class="input-group">
+              <input [(ngModel)]="identifier" [mask]="maskFormat" [placeholder]="placeholderText"
+                class="form-control" />
+              <button (click)="searchRetriever()" class="btn btn-primary">
+                Pesquisar
+              </button>
+            </div>
           </div>
         </div>
 
-        <!-- Empresa vinculada -->
-        <div *ngIf="business" class="business-info">
-          <h4>Empresa Vinculada</h4>
+        <!-- Dados do retirante -->
+        <div *ngIf="retriever" class="retriever-info">
+          <h4>Dados do Retirante</h4>
           <div class="info-grid">
             <div class="info-item">
-              <span class="label">Nome Fantasia:</span>
-              <span class="value">{{business.name_fantasy}}</span>
+              <span class="label">Nome:</span>
+              <span class="value">{{retriever.name}}</span>
+            </div>
+            <div *ngIf="retriever.cpf" class="info-item">
+              <span class="label">CPF:</span>
+              <span class="value">{{retriever.cpf | mask: '000.000.000-00'}}</span>
+            </div>
+            <div *ngIf="retriever.rg" class="info-item">
+              <span class="label">RG:</span>
+              <span class="value">{{retriever.rg}}</span>
             </div>
             <div class="info-item">
-              <span class="label">Razão Social:</span>
-              <span class="value">{{business.razao_social}}</span>
+              <span class="label">Autorizado:</span>
+              <span class="value badge"
+                [ngClass]="{'badge-success': retriever.authorized, 'badge-danger': !retriever.authorized}">
+                {{retriever.authorized ? 'Sim' : 'Não'}}
+              </span>
             </div>
           </div>
-        </div>
 
-        <!-- Formulário de despacho -->
-        <div class="dispatch-form">
-          <h4>Registrar Retirada</h4>
-          <div class="form-group">
-            <label>Números das Notas Fiscais</label>
-            <input
-              [(ngModel)]="invoiceNumbers"
-              class="form-control"
-              placeholder="Digite os números separados por vírgula"
-            />
-            <small>Exemplo: 12345, 67890, 54321</small>
+          <!-- Empresa vinculada -->
+          <div *ngIf="business" class="business-info">
+            <h4>Empresa Vinculada</h4>
+            <div class="info-grid">
+              <div class="info-item">
+                <span class="label">Nome Fantasia:</span>
+                <span class="value">{{business.name_fantasy}}</span>
+              </div>
+              <div class="info-item">
+                <span class="label">Razão Social:</span>
+                <span class="value">{{business.razao_social}}</span>
+              </div>
+            </div>
           </div>
 
-          <div class="form-group">
-            <label>Código do Almoxarife</label>
-            <input
-              [(ngModel)]="warehouseCode"
-              class="form-control"
-              placeholder="Digite o código"
-            />
-          </div>
-
-          <button (click)="saveDispatch()" class="btn btn-submit">
-            Registrar Retirada
-          </button>
-        </div>
-      </div>
-
-      <!-- Mensagens de status -->
-      <div *ngIf="errorMessage" class="alert alert-error">
-        {{errorMessage}}
-      </div>
-      <div *ngIf="successMessage" class="alert alert-success">
-        {{successMessage}}
-      </div>
-
-      <!-- NOVA FUNCIONALIDADE: Buscar por Auto Peças / Código do Almoxarife -->
-      <hr style="margin: 2rem 0;" />
-      <div class="search-section">
-        <button class="btn btn-primary" (click)="startSearch()" *ngIf="!showSearchField">
-          🔍 Buscar Retirada
-        </button>
-
-        <div *ngIf="showSearchField">
-          <h4>Escolha o tipo de pesquisa:</h4>
-          <div class="search-options">
-            <button class="btn btn-toggle" (click)="selectCategory('autoparts')" [class.active]="searchCategory === 'autoparts'">
-              🔧 Auto Peças
-            </button>
-            <button class="btn btn-toggle" (click)="selectCategory('almoxarife')" [class.active]="searchCategory === 'almoxarife'">
-              👤 Código do Almoxarife
-            </button>
-          </div>
-
-          <div *ngIf="searchCategory" class="search-field">
-            <label>
-              {{ searchCategory === 'autoparts' ? 'Nome da Auto Peças' : 'Código do Almoxarife' }}
-            </label>
-
-            <div class="input-group">
-              <input [(ngModel)]="queryText" class="form-control" placeholder="Digite aqui..." />
+          <!-- Formulário de despacho -->
+          <div class="dispatch-form">
+            <h4>Registrar Retirada</h4>
+            <div class="form-group">
+              <label>Números das Notas Fiscais</label>
+              <input [(ngModel)]="invoiceNumbers" class="form-control"
+                placeholder="Digite os números separados por vírgula" />
+              <small>Exemplo: 12345, 67890, 54321</small>
             </div>
 
-            <button class="btn btn-primary mt-2" (click)="searchByCategory()" [disabled]="!queryText">
-              📄 Consultar Registro
+            <div class="form-group">
+              <label>Código do Almoxarife</label>
+              <input [(ngModel)]="warehouseCode" class="form-control" placeholder="Digite o código" />
+            </div>
+
+            <button (click)="saveDispatch()" class="btn btn-submit">
+              Registrar Retirada
             </button>
           </div>
         </div>
-      </div>
 
-      <!-- Resultado da nova busca -->
-      <div *ngIf="result" class="retriever-info">
-        <h4>Resultado da Retirada</h4>
-        <div class="info-grid">
-          <div class="info-item">
-            <span class="label">Nome do Retirante:</span>
-            <span class="value">{{ result.nomeRetirante }}</span>
-          </div>
-          <div class="info-item">
-            <span class="label">Código do Almoxarife:</span>
-            <span class="value">{{ result.codigoAlmoxarife }}</span>
-          </div>
-          <div class="info-item">
-            <span class="label">Auto Peças:</span>
-            <span class="value">{{ result.nomeAutopecas }}</span>
-          </div>
-          <div class="info-item">
-            <span class="label">Data e Hora:</span>
-            <span class="value">{{ result.dataHora }}</span>
+        <!-- Mensagens de status -->
+        <div *ngIf="errorMessage" class="alert alert-error">
+          {{errorMessage}}
+        </div>
+        <div *ngIf="successMessage" class="alert alert-success">
+          {{successMessage}}
+        </div>
+
+
+        <!-- Resultado da nova busca -->
+        <div *ngIf="result" class="retriever-info">
+          <h4>Resultado da Retirada</h4>
+          <div class="info-grid">
+            <div class="info-item">
+              <span class="label">Nome do Retirante:</span>
+              <span class="value">{{ result.nomeRetirante }}</span>
+            </div>
+            <div class="info-item">
+              <span class="label">Código do Almoxarife:</span>
+              <span class="value">{{ result.codigoAlmoxarife }}</span>
+            </div>
+            <div class="info-item">
+              <span class="label">Auto Peças:</span>
+              <span class="value">{{ result.nomeAutopecas }}</span>
+            </div>
+            <div class="info-item">
+              <span class="label">Data e Hora:</span>
+              <span class="value">{{ result.dataHora }}</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+  <div class="col-md-6 p-4 rounded-lg shadow-lg w-1/3 bg-green-500">
+    <div class="card flex-1">
+  <!-- NOVA FUNCIONALIDADE: Buscar por Auto Peças / Código do Almoxarife -->
+  <hr style="margin: 2rem 0;" />
+  <div class="search-section">
+
+    <!-- Opções de pesquisa já visíveis -->
+    <h4>Escolha o tipo de pesquisa:</h4>
+    <div class="search-options">
+      <button class="btn btn-toggle" (click)="selectCategory('autoparts')"
+        [class.active]="searchCategory === 'autoparts'">
+        🔧 Auto Peças
+      </button>
+      <button class="btn btn-toggle" (click)="selectCategory('almoxarife')"
+        [class.active]="searchCategory === 'almoxarife'">
+        👤 Código do Almoxarife
+      </button>
+    </div>
+
+    <div *ngIf="searchCategory" class="search-field">
+      <label>
+        {{ searchCategory === 'autoparts' ? 'Nome da Auto Peças' : 'Código do Almoxarife' }}
+      </label>
+
+      <div class="input-group">
+        <input [(ngModel)]="queryText" class="form-control" placeholder="Digite aqui..." />
+      </div>
+
+      <button class="btn btn-primary mt-2" (click)="searchByCategory()" [disabled]="!queryText">
+        📄 Consultar Registro
+      </button>
+    </div>
+  </div>
+</div>
+
   </div>
 </div>
